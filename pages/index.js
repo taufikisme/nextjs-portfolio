@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import LoadingBar from "react-top-loading-bar";
 import Head from "next/head";
 import Link from "next/link";
@@ -119,7 +118,7 @@ export default function Home() {
           <li>
             <Link href="/">
               <a>
-                <Img className="h-12 w-auto" src="/images/myself-small.png" />
+                <img className="h-12 w-auto" src="/images/myself-small.png" />
               </a>
             </Link>
           </li>
@@ -144,7 +143,7 @@ export default function Home() {
         <Container>
           <div className="md:flex md:flex-row-reverse items-center">
             <div className="md:w-4/12 w-8/12 mb-8 mx-auto">
-              <Img className="w-full" src="/images/myself-big.png" />
+              <img className="w-full" src="/images/myself-big.png" />
             </div>
 
             <div className="md:w-8/12 w-11/12 mx-auto flex-row space-y-7">
