@@ -309,7 +309,7 @@ export default function Home() {
                   <FaGlobe className="mr-2" /> Demo
                 </Button>
                 <a
-                  href="https://taufikisme.vercel.app/"
+                  href="https://github.com/taufikisme/nextjs-portfolio"
                   target="_blank"
                   rel="noreferrer"
                 >
