@@ -85,6 +85,11 @@ export default function Home() {
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
+
+    if (!localStorage.getItem("theme")) {
+      localStorage.setItem("theme", "light");
+    }
+
     if (
       localStorage.theme === "dark" ||
       (!("theme" in localStorage) &&
@@ -149,7 +154,7 @@ export default function Home() {
             <div className="md:w-8/12 w-11/12 mx-auto flex-row space-y-7">
               <div className="space-y-3">
                 <h1 className="md:text-6xl text-4xl font-bold text-blue-500">
-                  Hello, I'm Taufik
+                  Hello, I&apos;m Taufik
                 </h1>
                 <p className="md:text-3xl text-2xl dark:text-white font-medium">
                   A Passionate Full Stack Web Developer based in Kediri,
@@ -348,7 +353,7 @@ export default function Home() {
       <div>
         <Container>
           <div id="contact" className="flex mb-10">
-            <Heading>Let's Get in Touch!</Heading>
+            <Heading>Let&apos;s Get in Touch!</Heading>
           </div>
           <div className="grid md:grid-cols-3 grid-cols-1 md:gap-6 gap-4 mx-auto">
             <CardPill
