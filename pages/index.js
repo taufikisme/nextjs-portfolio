@@ -308,9 +308,15 @@ export default function Home() {
                 <Button variant="with-icon">
                   <FaGlobe className="mr-2" /> Demo
                 </Button>
-                <Button variant="with-icon">
-                  <FaGithub className="mr-2" /> Github
-                </Button>
+                <a
+                  href="https://taufikisme.vercel.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Button variant="with-icon">
+                    <FaGithub className="mr-2" /> Github
+                  </Button>
+                </a>
               </CardFooter>
             </Card>
 
