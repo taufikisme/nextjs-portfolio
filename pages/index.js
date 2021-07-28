@@ -45,7 +45,7 @@ import {
   FaFacebook,
   FaTwitter,
   FaWhatsapp,
-  FaTelegram,
+  FaLinkedin,
   FaSun,
   FaMoon,
 } from "react-icons/fa";
@@ -307,7 +307,8 @@ export default function Home() {
                 <CardHeader>Web Portfolio</CardHeader>
                 <p className="text-lg">
                   A simple portfolio website made using{" "}
-                  <span className="text-blue-500">Nextjs</span>.
+                  <span className="text-blue-500">Nextjs</span> and{" "}
+                  <span className="text-blue-500">Tailwind CSS</span>.
                 </p>
               </CardBody>
               <CardFooter>
@@ -332,7 +333,8 @@ export default function Home() {
                 <CardHeader>TeknikStalk</CardHeader>
                 <p className="text-lg">
                   Sebuah projek web sederhana menggunakan{" "}
-                  <span className="text-blue-500">Reactjs</span> yang
+                  <span className="text-blue-500">Reactjs</span> dan{" "}
+                  <span className="text-blue-500">Bootstrap CSS</span> yang
                   menampilkan data NIM dan foto mahasiswa yang didapatkan dari
                   siap.undip.ac.id
                 </p>
@@ -399,10 +401,10 @@ export default function Home() {
               <FaWhatsapp className="mr-3" /> WhatsApp
             </CardPill>
             <CardPill
-              link="https://t.me/taufikisme"
+              link="https://www.linkedin.com/in/moh-taufik-afandi-5255681a6/"
               className="bg-white dark:bg-dark1"
             >
-              <FaTelegram className="mr-3" /> Telegram
+              <FaLinkedin className="mr-3" /> Linkedin
             </CardPill>
           </div>
         </Container>
