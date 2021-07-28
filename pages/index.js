@@ -161,7 +161,13 @@ export default function Home() {
                   Indonesia.
                 </p>
               </div>
-              <Button variant="glow">Download CV</Button>
+              <a
+                href="https://drive.google.com/file/d/1rDJ1EH0_x4OtkpPaKE87ZKTNP3xGFIO1/view?usp=sharing"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Button variant="glow">Download CV</Button>
+              </a>
             </div>
           </div>
         </Container>
