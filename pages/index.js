@@ -152,7 +152,7 @@ export default function Home() {
             </div>
 
             <div className="md:w-8/12 w-11/12 mx-auto flex-row space-y-7">
-              <div className="space-y-3">
+              <div className="space-y-3 mb-6">
                 <h1 className="md:text-6xl text-4xl font-bold text-blue-500">
                   Hello, I&apos;m Taufik
                 </h1>
