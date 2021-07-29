@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import LoadingBar from "react-top-loading-bar";
+// import LoadingBar from "react-top-loading-bar";
 import Head from "next/head";
-import Link from "next/link";
 import Layout from "../components/Layout";
 import Button from "../components/Button";
 import ButtonCircle from "../components/ButtonCircle";
 import Navbar from "../components/Navbar";
+import Navbrand from "../components/Navbrand";
 import Navlink from "../components/Navlink";
 import Container from "../components/Container";
 import RoundBottom from "../components/RoundBottom";
@@ -119,21 +119,7 @@ export default function Home() {
         className="fixed z-50 h-[2px] bg-blue-500 shadow-blue-neon"
       ></div>
       <Navbar>
-        <ul className="flex items-center space-x-3">
-          <li>
-            <Link href="/">
-              <a>
-                <img className="h-12 w-auto" src="/images/myself-small.png" />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/">
-              <a className="font-bold text-2xl dark:text-white">Taufikisme</a>
-            </Link>
-          </li>
-        </ul>
-
+        <Navbrand img={`/images/myself-small.png`} name={`Taufikisme`} />
         <div className="flex flex-row space-x-5">
           <Navlink />
           <ButtonCircle handleClick={handleModeChange}>
@@ -298,70 +284,72 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="md:-translate-y-40 -translate-y-48">
-        <Container>
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-10 mx-auto">
-            <Card variant="project">
-              <CardHero image="bg-project1" />
-              <CardBody>
-                <CardHeader>Web Portfolio</CardHeader>
-                <p className="text-lg">
-                  A simple portfolio website made using{" "}
-                  <span className="text-blue-500">Nextjs</span> and{" "}
-                  <span className="text-blue-500">Tailwind CSS</span>.
-                </p>
-              </CardBody>
-              <CardFooter>
-                <Button variant="with-icon">
-                  <FaGlobe className="mr-2" /> Demo
-                </Button>
-                <a
-                  href="https://github.com/taufikisme/nextjs-portfolio"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Button variant="with-icon">
-                    <FaGithub className="mr-2" /> Github
-                  </Button>
-                </a>
-              </CardFooter>
-            </Card>
-
-            <Card variant="project">
-              <CardHero image="bg-project2" />
-              <CardBody>
-                <CardHeader>TeknikStalk</CardHeader>
-                <p className="text-lg">
-                  Sebuah projek web sederhana menggunakan{" "}
-                  <span className="text-blue-500">Reactjs</span> dan{" "}
-                  <span className="text-blue-500">Bootstrap CSS</span> yang
-                  menampilkan data NIM dan foto mahasiswa yang didapatkan dari
-                  siap.undip.ac.id
-                </p>
-              </CardBody>
-              <CardFooter>
-                <a
-                  href="https://taufikisme-117c8.web.app/teknik-stalk"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+      <div className="bg-light2 dark:bg-dark2 rounded-t-4xl -mt-16">
+        <div className="md:-translate-y-24 -translate-y-28">
+          <Container>
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-10 mx-auto">
+              <Card variant="project">
+                <CardHero image="bg-project1" />
+                <CardBody>
+                  <CardHeader>Web Portfolio</CardHeader>
+                  <p className="text-lg">
+                    A simple portfolio website made using{" "}
+                    <span className="text-blue-500">Nextjs</span> and{" "}
+                    <span className="text-blue-500">Tailwind CSS</span>.
+                  </p>
+                </CardBody>
+                <CardFooter>
                   <Button variant="with-icon">
                     <FaGlobe className="mr-2" /> Demo
                   </Button>
-                </a>
-                <a
-                  href="https://github.com/taufikisme"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Button variant="with-icon">
-                    <FaGithub className="mr-2" /> Github
-                  </Button>
-                </a>
-              </CardFooter>
-            </Card>
-          </div>
-        </Container>
+                  <a
+                    href="https://github.com/taufikisme/nextjs-portfolio"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Button variant="with-icon">
+                      <FaGithub className="mr-2" /> Github
+                    </Button>
+                  </a>
+                </CardFooter>
+              </Card>
+
+              <Card variant="project">
+                <CardHero image="bg-project2" />
+                <CardBody>
+                  <CardHeader>TeknikStalk</CardHeader>
+                  <p className="text-lg">
+                    Sebuah projek web sederhana menggunakan{" "}
+                    <span className="text-blue-500">Reactjs</span> dan{" "}
+                    <span className="text-blue-500">Bootstrap CSS</span> yang
+                    menampilkan data NIM dan foto mahasiswa yang didapatkan dari
+                    siap.undip.ac.id
+                  </p>
+                </CardBody>
+                <CardFooter>
+                  <a
+                    href="https://taufikisme-117c8.web.app/teknik-stalk"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Button variant="with-icon">
+                      <FaGlobe className="mr-2" /> Demo
+                    </Button>
+                  </a>
+                  <a
+                    href="https://github.com/taufikisme"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Button variant="with-icon">
+                      <FaGithub className="mr-2" /> Github
+                    </Button>
+                  </a>
+                </CardFooter>
+              </Card>
+            </div>
+          </Container>
+        </div>
       </div>
 
       <div>

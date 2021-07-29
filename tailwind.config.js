@@ -7,6 +7,9 @@ module.exports = {
       borderRadius: {
         extra: "8rem",
         "4xl": "5rem",
+        t: {
+          "4xl": "5rem",
+        },
       },
       backgroundSize: {
         "size-200": "200% 200%",
