@@ -42,10 +42,39 @@ export default function Blog(data) {
     <LayoutPost>
       <Head>
         <title>{post.title} | Taufikisme Blog</title>
+        <meta name="title" content={post.title}></meta>
         <meta
           name="description"
-          content="Sebuah blog yang membahas segala persepsi saya khususnya terkait dunia web development dan teknologi lainnya"
+          content={post.excerpt.replace(/(<([^>]+)>)/gi, "")}
         />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content={`https://taufikisme.vercel.app/blog/${post.slug}`}
+        />
+        <meta property="og:title" content={post.title} />
+        <meta
+          property="og:description"
+          content={post.excerpt.replace(/(<([^>]+)>)/gi, "")}
+        />
+        <meta
+          property="og:image"
+          content={post.featuredImage.node.sourceUrl}
+        ></meta>
+        <meta property="twitter:card" content={post.title} />
+        <meta
+          property="twitter:url"
+          content={`https://taufikisme.vercel.app/blog/${post.slug}`}
+        />
+        <meta property="twitter:title" content={post.title} />
+        <meta
+          property="twitter:description"
+          content={post.excerpt.replace(/(<([^>]+)>)/gi, "")}
+        />
+        <meta
+          property="twitter:image"
+          content={post.featuredImage.node.sourceUrl}
+        ></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar>
