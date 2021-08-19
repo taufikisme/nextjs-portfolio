@@ -11,6 +11,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/id";
 import Contact from "../../components/Contact";
 import ButtonMode from "../../components/ButtonMode";
+import { getAllPostWithSlug, getSinglePost } from "../../lib/api";
 dayjs.locale("id");
 
 export default function Blog(data) {
@@ -90,83 +91,16 @@ export default function Blog(data) {
 }
 
 export async function getStaticProps(context) {
-  const res = await fetch(`http://wp-api.kediridev.com/graphql`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: `
-      query SinglePostQuery($id: ID!, $idType: PostIdType!) {
-        post(id: $id, idType: $idType) {
-          title
-          slug
-          date
-          content
-          featuredImage {
-            node {
-              sourceUrl
-            }
-          }
-          categories {
-            nodes {
-              name
-              slug
-            }
-          }
-        }
-      }
-      `,
-      variables: {
-        id: context.params.slug,
-        idType: "SLUG",
-      },
-    }),
-  });
-
-  const json = await res.json();
+  const post = await getSinglePost(context);
   return {
     props: {
-      post: json.data.post,
+      post: post.data.post,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`http://wp-api.kediridev.com/graphql`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: `
-      query AllPostsQuery {
-        posts {
-          nodes {
-            slug
-            title
-            date
-            excerpt
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
-            categories {
-              nodes {
-                name
-                slug
-              }
-            }
-          }
-        }
-      }
-      `,
-    }),
-  });
-
-  const json = await res.json();
-  const posts = json.data.posts.nodes;
+  const posts = await getAllPostWithSlug();
 
   const paths = posts.map((post) => ({
     params: { slug: post.slug },

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../../components/Layout";
@@ -16,6 +16,7 @@ import Contact from "../../components/Contact";
 import ButtonMode from "../../components/ButtonMode";
 import Button from "../../components/Button";
 dayjs.locale("id");
+import { getAllPostsForHome } from "../../lib/api";
 
 export default function BlogIndex({ posts }) {
   return (
@@ -85,43 +86,11 @@ export default function BlogIndex({ posts }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`http://wp-api.kediridev.com/graphql`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: `
-      query HomePagesQuery {
-        posts {
-          nodes {
-            slug
-            title
-            date
-            excerpt
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
-            categories {
-              nodes {
-                name
-                slug
-              }
-            }
-          }
-        }
-      }
-      `,
-    }),
-  });
-
-  const json = await res.json();
+  const posts = await getAllPostsForHome();
 
   return {
     props: {
-      posts: json.data.posts,
+      posts: posts.data.posts,
     },
   };
 }
