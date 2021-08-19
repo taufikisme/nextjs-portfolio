@@ -9,7 +9,13 @@ class MyDocument extends Document {
   render() {
     return (
       <Html style={{ scrollBehavior: `smooth` }}>
-        <Head />
+        <Head>
+          <meta
+            name="google-site-verification"
+            content="CFrld2suc4I75ulSf93990rtPgq3jkQvqbA_byMyNMI"
+            crossOrigin="true"
+          />
+        </Head>
         <body className="bg-light2 dark:bg-dark2">
           <Main />
           <NextScript />
