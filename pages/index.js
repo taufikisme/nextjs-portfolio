@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-// import LoadingBar from "react-top-loading-bar";
+import React from "react";
 import Head from "next/head";
 import Layout from "../components/Layout";
 import Button from "../components/Button";
-import ButtonCircle from "../components/ButtonCircle";
 import Navbar from "../components/Navbar";
 import Navbrand from "../components/Navbrand";
 import Navlink from "../components/Navlink";
@@ -38,75 +36,11 @@ SwiperCore.use([Pagination]);
 SwiperCore.use([Navigation]);
 
 // react icons
-import {
-  FaGithub,
-  FaGlobe,
-  FaInstagram,
-  FaFacebook,
-  FaTwitter,
-  FaWhatsapp,
-  FaLinkedin,
-  FaSun,
-  FaMoon,
-} from "react-icons/fa";
+import { FaGithub, FaGlobe } from "react-icons/fa";
+import Contact from "../components/Contact";
+import ButtonMode from "../components/ButtonMode";
 
 export default function Home() {
-  const [mode, setMode] = useState("light");
-  const [progress, setProgress] = useState(0);
-
-  const handleScroll = () => {
-    const mynavbar = document.getElementById("myNav");
-    if (scrollY > 20) {
-      mynavbar.classList.add("shadow-lg");
-    } else {
-      mynavbar.classList.remove("shadow-lg");
-    }
-
-    var h = document.documentElement,
-      b = document.body,
-      st = "scrollTop",
-      sh = "scrollHeight";
-
-    var percent =
-      ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100;
-
-    setProgress(percent);
-  };
-
-  const handleModeChange = () => {
-    if (mode === "light") {
-      localStorage.setItem("theme", "dark");
-      setMode("dark");
-    } else {
-      localStorage.setItem("theme", "light");
-      setMode("light");
-    }
-  };
-
-  useEffect(() => {
-    document.documentElement.style.scrollBehavior = "smooth";
-
-    if (!localStorage.getItem("theme")) {
-      localStorage.setItem("theme", "light");
-    }
-
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    setMode(localStorage.getItem("theme"));
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
-
   return (
     <Layout>
       <Head>
@@ -114,19 +48,15 @@ export default function Home() {
         <meta name="description" content="Taufik's Web Portfolio" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div
+      {/* <div
         style={{ width: `${progress}%` }}
-        className="fixed z-50 h-[2px] bg-blue-500 shadow-blue-neon"
-      ></div>
+        className="fixed z-50 h-[3px] bg-blue-500 shadow-blue-neon transition ease-in-out"
+      ></div> */}
       <Navbar>
         <Navbrand img={`/images/myself-small.png`} name={`Taufikisme`} />
         <div className="flex flex-row space-x-5">
           <Navlink />
-          <ButtonCircle handleClick={handleModeChange}>
-            <span className="mx-auto">
-              {mode === "light" ? <FaMoon /> : <FaSun />}
-            </span>
-          </ButtonCircle>
+          <ButtonMode />
         </div>
       </Navbar>
 
@@ -352,51 +282,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div>
-        <Container>
-          <div id="contact" className="flex mb-10">
-            <Heading>Let&apos;s Get in Touch!</Heading>
-          </div>
-          <div className="grid md:grid-cols-3 grid-cols-1 md:gap-6 gap-4 mx-auto">
-            <CardPill
-              link="https://www.instagram.com/whois.taufik/"
-              className="bg-white dark:bg-dark1"
-            >
-              <FaInstagram className="mr-3" /> Instagram
-            </CardPill>
-            <CardPill
-              link="https://www.facebook.com/taufikisme.id"
-              className="bg-white dark:bg-dark1"
-            >
-              <FaFacebook className="mr-3" /> Facebook
-            </CardPill>
-            <CardPill
-              link="https://twitter.com/taufikisme_"
-              className="bg-white dark:bg-dark1"
-            >
-              <FaTwitter className="mr-3" /> Twitter
-            </CardPill>
-            <CardPill
-              link="https://github.com/taufikisme"
-              className="bg-white dark:bg-dark1"
-            >
-              <FaGithub className="mr-3" /> Github
-            </CardPill>
-            <CardPill
-              link="https://wa.me/6285648341874"
-              className="bg-white dark:bg-dark1"
-            >
-              <FaWhatsapp className="mr-3" /> WhatsApp
-            </CardPill>
-            <CardPill
-              link="https://www.linkedin.com/in/moh-taufik-afandi-5255681a6/"
-              className="bg-white dark:bg-dark1"
-            >
-              <FaLinkedin className="mr-3" /> Linkedin
-            </CardPill>
-          </div>
-        </Container>
-      </div>
+      <Contact />
 
       <Footer>Created with ☕ using Nextjs</Footer>
     </Layout>

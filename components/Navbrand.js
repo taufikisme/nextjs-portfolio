@@ -12,7 +12,9 @@ export default function Navbrand({ img, name }) {
       </li>
       <li>
         <Link href="/">
-          <a className="font-bold text-2xl dark:text-white">{name}</a>
+          <a id="brandName" className="font-bold text-2xl dark:text-white">
+            {name}
+          </a>
         </Link>
       </li>
     </ul>
