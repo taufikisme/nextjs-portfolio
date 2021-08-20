@@ -17,6 +17,7 @@ import ButtonMode from "../../components/ButtonMode";
 import Button from "../../components/Button";
 dayjs.locale("id");
 import { getAllPostsForHome } from "../../lib/api";
+import Fade from "react-reveal/Fade";
 
 export default function BlogIndex({ posts }) {
   return (
@@ -38,48 +39,52 @@ export default function BlogIndex({ posts }) {
       </Navbar>
       <div className="pt-28">
         <Container>
-          {posts.nodes.map((post, i) => (
-            <Card key={i} variant="blog">
-              <div className="md:flex h-full">
-                <div
-                  className="md:w-4/12 bg-blue-500 md:h-full h-40 w-full bg-cover bg-center bg-no-repeat"
-                  style={{
-                    backgroundImage: `url(${post.featuredImage.node.sourceUrl})`,
-                  }}
-                ></div>
-                <div className="md:w-8/12 w-full px-5 py-8 space-y-3">
-                  <Link href={`/blog/${post.slug}`}>
-                    <a className="hover:text-blue-500 transition">
-                      <h2 className="font-bold text-3xl">{post.title}</h2>
-                    </a>
-                  </Link>
-                  <div className="flex space-x-5 text-sm text-gray-400">
-                    <div className="flex space-x-2">
-                      <FaCalendar />
-                      <span>{dayjs(post.date).format("D MMMM YYYY")}</span>
-                    </div>
-                    <p className="flex space-x-2 capitalize">
-                      <FaTag />
-                      <span>{post.categories.nodes[0].name}</span>
-                    </p>
-                  </div>
+          <Fade bottom>
+            {posts.nodes.map((post, i) => (
+              <Card key={i} variant="blog">
+                <div className="md:flex h-full">
                   <div
-                    dangerouslySetInnerHTML={{
-                      __html: post.excerpt.substring(0, 150) + "...",
+                    className="md:w-4/12 bg-blue-500 md:h-full h-40 w-full bg-cover bg-center bg-no-repeat"
+                    style={{
+                      backgroundImage: `url(${post.featuredImage.node.sourceUrl})`,
                     }}
-                  />
-                  <Link href={`/blog/${post.slug}`}>
-                    <a>
-                      <Button className="px-3 py-1 mt-2">Read More</Button>
-                    </a>
-                  </Link>
+                  ></div>
+                  <div className="md:w-8/12 w-full px-5 py-8 space-y-3">
+                    <Link href={`/blog/${post.slug}`}>
+                      <a className="hover:text-blue-500 transition">
+                        <h2 className="font-bold text-3xl">{post.title}</h2>
+                      </a>
+                    </Link>
+                    <div className="flex space-x-5 text-sm text-gray-400">
+                      <div className="flex space-x-2">
+                        <FaCalendar />
+                        <span>{dayjs(post.date).format("D MMMM YYYY")}</span>
+                      </div>
+                      <p className="flex space-x-2 capitalize">
+                        <FaTag />
+                        <span>{post.categories.nodes[0].name}</span>
+                      </p>
+                    </div>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: post.excerpt.substring(0, 150) + "...",
+                      }}
+                    />
+                    <Link href={`/blog/${post.slug}`}>
+                      <a>
+                        <Button className="px-3 py-1 mt-2">Read More</Button>
+                      </a>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </Card>
-          ))}
+              </Card>
+            ))}
+          </Fade>
         </Container>
       </div>
-      <Contact />
+      <Fade bottom>
+        <Contact />
+      </Fade>
       <Footer>Created with ☕ using Nextjs</Footer>
     </Layout>
   );

@@ -1,5 +1,6 @@
 import Container from "./Container";
 import { useEffect, useState } from "react";
+import Fade from "react-reveal/Fade";
 
 export default function Navbar({ children, className }) {
   const addClassName = className ? `${className}` : "";
@@ -37,7 +38,9 @@ export default function Navbar({ children, className }) {
       id="myNav"
       className={`bg-white dark:bg-dark1 w-screen z-40 fixed transition-all ${addClassName}`}
     >
-      <Container className="flex justify-between">{children}</Container>
+      <Fade top>
+        <Container className="flex justify-between">{children}</Container>
+      </Fade>
     </div>
   );
 }
