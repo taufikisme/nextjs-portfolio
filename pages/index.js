@@ -318,9 +318,11 @@ export default function Home({ posts }) {
       </div>
 
       <Container>
-        <div id="blog" className="text-center mb-8">
-          <Heading>Latest Posts</Heading>
-        </div>
+        <Fade bottom>
+          <div id="blog" className="text-center mb-8">
+            <Heading>Latest Posts</Heading>
+          </div>
+        </Fade>
         <div>
           <Fade bottom>
             {latestPosts.map((post, i) => (
