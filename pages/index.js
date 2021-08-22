@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import Layout from "../components/Layout";
 import Button from "../components/Button";
 import Navbar from "../components/Navbar";
@@ -18,6 +19,10 @@ import CardPill from "../components/CardPill";
 import CardPillBody from "../components/CardPillBody";
 import Footer from "../components/Footer";
 import Fade from "react-reveal/Fade";
+import { getAllPostsForHome } from "../lib/api";
+import dayjs from "dayjs";
+import "dayjs/locale/id";
+dayjs.locale("id");
 
 import { isMobile } from "react-device-detect";
 
@@ -37,11 +42,19 @@ SwiperCore.use([Pagination]);
 SwiperCore.use([Navigation]);
 
 // react icons
-import { FaGithub, FaGlobe } from "react-icons/fa";
+import {
+  FaGithub,
+  FaGlobe,
+  FaCalendar,
+  FaTag,
+  FaArrowRight,
+} from "react-icons/fa";
 import Contact from "../components/Contact";
 import ButtonMode from "../components/ButtonMode";
 
-export default function Home() {
+export default function Home({ posts }) {
+  const latestPosts = [posts.nodes[0], posts.nodes[1]];
+
   return (
     <Layout>
       <Head>
@@ -303,6 +316,67 @@ export default function Home() {
           </Container>
         </div>
       </div>
+
+      <Container>
+        <div id="blog" className="text-center mb-8">
+          <Heading>Latest Posts</Heading>
+        </div>
+        <div>
+          <Fade bottom>
+            {latestPosts.map((post, i) => (
+              <Card key={i} variant="blog">
+                <div className="md:flex h-full">
+                  <div
+                    className="md:w-4/12 bg-blue-500 md:h-full h-40 w-full bg-cover bg-center bg-no-repeat"
+                    style={{
+                      backgroundImage: `url(${post.featuredImage.node.sourceUrl})`,
+                    }}
+                  ></div>
+                  <div className="md:w-8/12 w-full px-5 py-8 space-y-3">
+                    <Link href={`/blog/${post.slug}`}>
+                      <a className="hover:text-blue-500 transition">
+                        <h2 className="font-bold text-3xl">{post.title}</h2>
+                      </a>
+                    </Link>
+                    <div className="flex space-x-5 text-sm text-gray-400">
+                      <div className="flex space-x-2">
+                        <FaCalendar />
+                        <span>{dayjs(post.date).format("D MMMM YYYY")}</span>
+                      </div>
+                      <p className="flex space-x-2 capitalize">
+                        <FaTag />
+                        <span>{post.categories.nodes[0].name}</span>
+                      </p>
+                    </div>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: post.excerpt.substring(0, 150) + "...",
+                      }}
+                    />
+                    <Link href={`/blog/${post.slug}`}>
+                      <a>
+                        <Button className="px-3 py-1 mt-2">Read More</Button>
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </Fade>
+        </div>
+        <Fade bottom>
+          <div className="float-right dark:text-white">
+            <Link href="/blog">
+              <a>
+                <Button className="flex items-center space-x-2 px-4 py-1">
+                  <span>View More</span> <FaArrowRight />
+                </Button>
+              </a>
+            </Link>
+          </div>
+        </Fade>
+      </Container>
+
       <Fade bottom>
         <Contact />
       </Fade>
@@ -310,4 +384,14 @@ export default function Home() {
       <Footer>Created with ☕ using Nextjs</Footer>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const posts = await getAllPostsForHome();
+
+  return {
+    props: {
+      posts: posts.data.posts,
+    },
+  };
 }

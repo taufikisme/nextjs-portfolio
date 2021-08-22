@@ -15,7 +15,7 @@ import {
 export default function Contact({ className }) {
   const addClassName = className ? `${className}` : "";
   return (
-    <div className={`pb-10 ${addClassName}`}>
+    <div className={`py-10 mt-10 ${addClassName}`}>
       <Container>
         <div id="contact" className="flex mb-10">
           <Heading>Let&apos;s Get in Touch!</Heading>

@@ -20,15 +20,16 @@ export default function Blog(data) {
 
   const handleScroll = () => {
     const mynavbar = document.getElementById("brandName");
+    const mylogo = document.getElementById("logoBrand");
 
     if (scrollY > 100) {
       mynavbar.innerHTML = post.title;
       mynavbar.classList.remove("text-2xl");
-      mynavbar.classList.add("md:text-2xl");
+      mylogo.classList.add("hidden");
     } else {
       mynavbar.innerHTML = "Taufikisme";
       mynavbar.classList.add("text-2xl");
-      mynavbar.classList.remove("md:text-2xl");
+      mylogo.classList.remove("hidden");
     }
   };
 

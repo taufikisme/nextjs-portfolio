@@ -9,7 +9,7 @@ export default function Navlink() {
   return (
     <>
       <Scrollspy
-        items={["about", "techstack", "project", "contact1"]}
+        items={["about", "techstack", "project", "blog", "contact1"]}
         currentClassName="border-b-2 border-blue-500"
         className="space-x-8 font-semibold hidden sm:flex items-center"
       >
@@ -32,9 +32,9 @@ export default function Navlink() {
         </li>
 
         <li>
-          <Link href="/blog">
-            <a className={navLinkClass}>Blog</a>
-          </Link>
+          <a href="#blog" className={navLinkClass}>
+            Blog
+          </a>
         </li>
 
         <li>

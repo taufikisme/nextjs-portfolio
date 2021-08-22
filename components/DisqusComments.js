@@ -3,7 +3,7 @@ const DisqusComments = ({ post }) => {
   const disqusShortname = "https-taufikisme-vercel-app";
   const disqusConfig = {
     url: `https://taufikisme.vercel.app/${post.slug}`,
-    identifier: post.postId, // Single post id
+    identifier: post.postId.toString(), // Single post id
     title: post.title, // Single post title
   };
   return (

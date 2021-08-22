@@ -5,8 +5,8 @@ export default function Navbrand({ img, name }) {
     <ul className="flex items-center space-x-3">
       <li>
         <Link href="/">
-          <a>
-            <img className="h-12 w-auto" src={img} />
+          <a id="logoBrand">
+            <img className="h-12 w-auto" src={img} alt="logo banner" />
           </a>
         </Link>
       </li>
