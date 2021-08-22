@@ -12,6 +12,7 @@ import "dayjs/locale/id";
 import Contact from "../../components/Contact";
 import ButtonMode from "../../components/ButtonMode";
 import { getAllPostWithSlug, getSinglePost } from "../../lib/api";
+import DisqusComments from "../../components/DisqusComments";
 dayjs.locale("id");
 
 export default function Blog(data) {
@@ -110,6 +111,9 @@ export default function Blog(data) {
             }}
           />
         </div>
+      </Container>
+      <Container>
+        <DisqusComments post={post} />
       </Container>
       <Contact className="mt-5 pt-8 bg-light2 dark:bg-dark2" />
       <Footer className="border-t dark:border-none">
