@@ -22,6 +22,7 @@ module.exports = {
         "pos-100": "100% 100%",
         "pos-110-200": "110% 200%",
         "pos-140-200": "140% 200%",
+        "pos-card-blog": "108% 170%",
       },
       backgroundImage: {
         "round-b-light": "url('/images/lengkung-bawah.png')",

@@ -44,7 +44,14 @@ export default function BlogIndex({ posts }) {
               <Card key={i} variant="blog">
                 <div className="md:flex h-full">
                   <div
-                    className="md:w-4/12 bg-blue-500 md:h-full h-40 w-full bg-cover bg-center bg-no-repeat"
+                    className="md:w-4/12 md:flex hidden bg-blue-500 overflow-hidden bg-center"
+                    style={{
+                      backgroundSize: `200% 100%`,
+                      backgroundImage: `url(${post.featuredImage.node.sourceUrl})`,
+                    }}
+                  ></div>
+                  <div
+                    className="md:w-4/12 md:hidden flex h-40 bg-blue-500 overflow-hidden bg-cover bg-center"
                     style={{
                       backgroundImage: `url(${post.featuredImage.node.sourceUrl})`,
                     }}
